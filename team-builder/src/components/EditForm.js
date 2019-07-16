@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, {useState}from 'react';
 
-const EditForm = (props) => {
-    
-    // useEffect(() => {
-    //     props.set
-    // },[props.memberToEdit])
+const EditForm = props => {
+
+    const changeHandler = e =>{
+        props.setObject({ ...props.member, [e.target.name]: e.target.value })
+    }
 
     return(
         <div>
@@ -12,28 +12,26 @@ const EditForm = (props) => {
                 <input
                     type='text'
                     placeholder='Enter name here...'
-                    value={props.memberToEdit.user}
-                    name='user'
-                    onChange={props.handleChange}
+                    name='name'
+                    value={props.member.name}
+                    onChange={changeHandler}
                 />
                 <input
                     type='text'
                     placeholder='Enter email here...'
-                    value={props.memberToEdit.email}
                     name='email'
-                    onChange={props.handleChange}
+                    value={props.member.email}
+                    onChange={changeHandler}
                 />
                 <input
                     type='text'
                     placeholder='Enter role here...'
-                    value={props.memberToEdit.role}
                     name='role'
-                    onChange={props.handleChange}
+                    value={props.member.role}
+                    onChange={changeHandler}
                 />
-                <button onClick={props.editMember} >Submit</button>
             </form>
         </div>
     )
 }
-
 export default EditForm;

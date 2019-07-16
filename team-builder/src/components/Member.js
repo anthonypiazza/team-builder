@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
+import EditForm from './EditForm';
 
 import './Member.css';
 
 function Member(props){
     // console.log(props.member)
+
+    const [object, setObject] = useState(props.member)
+
     return(
         <div key={props.id}>
-            <h1>{props.member.user}</h1>
-            <h2>{props.member.email}</h2>
-            <h3>{props.member.role}</h3>
-            <button onClick={() => props.editMember(props.member)}>Edit</button>
+            <h1>{object.name}</h1>
+            <h2>{object.email}</h2>
+            <h3>{object.role}</h3>
+            <EditForm setObject={setObject} member={object} />
         </div>
     )
 }

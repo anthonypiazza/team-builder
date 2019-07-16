@@ -8,21 +8,18 @@ const Form = (props) => {
                 <input
                     type='text'
                     placeholder='Enter name here...'
-                    value={props.newMember.user}
-                    name='user'
+                    name='name'
                     onChange={props.handleChange}
                 />
                 <input
                     type='text'
                     placeholder='Enter email here...'
-                    value={props.newMember.email}
                     name='email'
                     onChange={props.handleChange}
                 />
                 <input
                     type='text'
                     placeholder='Enter role here...'
-                    value={props.newMember.role}
                     name='role'
                     onChange={props.handleChange}
                 />

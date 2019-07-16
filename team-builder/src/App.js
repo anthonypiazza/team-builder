@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { team } from './team';
 import Form from './components/Form.js';
 import MemberList from './components/MemberList.js';
-import EditForm from './components/EditForm.js';
 
 
 import './App.css';
@@ -12,15 +11,11 @@ function App() {
 
   const [members, setMembers] = useState(team);
 
-  const [newMember, setNewMember] = useState({ user: '', email: '', role: '' });
-
-  const [memberToEdit, setMemberToEdit] = useState({ user: '', email: '', role: '' });
-
-  const [editing, setEditing] = useState(false)
+  const [newMember, setNewMember] = useState({ name: '', email: '', role: '' });
 
   const handleChange = (e) => {
-      setNewMember({ ...newMember, [e.target.name]: e.target.value })
-      console.log(newMember)
+    setNewMember({ ...newMember, [e.target.name]: e.target.value })
+    console.log(newMember)
   }
 
   const addMember = (e) => {
@@ -30,11 +25,11 @@ function App() {
     console.log(members)
   }
 
-  const editMember = (e, editedUser) => {
+  const editMember = (e) => {
     e.preventDefault();
-    setEditing(true)
-    setMemberToEdit({ user: editedUser.id, email: editedUser.email, role: editedUser.role})
-    console.log(memberToEdit);
+    setMembers([ ...members, newMember ])
+    console.log(newMember)
+    console.log(members)
   }
 
   return (
@@ -45,8 +40,7 @@ function App() {
         handleChange={handleChange}
         addMember={addMember} 
       />
-      <MemberList members={members} editMember={editMember} />
-      <EditForm memberToEdit={memberToEdit} editMember={editMember} />
+      <MemberList members={members} setMembers={setMembers} />
     </div>
   );
 }
